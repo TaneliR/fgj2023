@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Tree-Roots.jpg" type="Texture" id=1]
-[ext_resource path="res://Scenes/PaavoNodeRandomizer.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/PaavoCameraManagerScript.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/PaavoCamera.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/PaavoNodeRandomizer.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/PaavoCameraManagerScript.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/PaavoCamera.gd" type="Script" id=4]
 
 [node name="TestScene" type="Node2D"]
 
@@ -17,6 +17,7 @@ target_node = NodePath("../NodeRandomizer")
 
 [node name="Camera2D" type="Camera2D" parent="CameraNode"]
 current = true
+zoom = Vector2( 3, 3 )
 script = ExtResource( 4 )
 
 [node name="NodeRandomizer" type="Node2D" parent="."]
