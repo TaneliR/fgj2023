@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/mole.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/mole.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -30,10 +31,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 2.0
+height = 6.0
+
+[node name="moleBody" type="KinematicBody2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -8 )
 frames = SubResource( 6 )
-frame = 1
+frame = 4
 speed_scale = 3.0
 playing = true
 centered = false
-offset = Vector2( 0, -4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 7 )
