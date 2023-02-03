@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/root.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.364706, 0.188235, 0.00392157, 1, 0.552941, 0.203922, 0.00784314, 1 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 2 )
+fill_from = Vector2( 0.5, 1 )
+fill_to = Vector2( 0.5, 0 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 516, 304 )
+scale = Vector2( 16, 9.46875 )
+texture = SubResource( 3 )
+
+[node name="Line2D" type="Line2D" parent="."]
+script = ExtResource( 1 )
