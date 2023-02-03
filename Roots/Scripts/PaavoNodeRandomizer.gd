@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	for i in range(5):
+	for _i in range(5):
 		
 		var randNode = Node2D.new()
 		
