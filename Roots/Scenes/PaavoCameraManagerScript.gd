@@ -1,8 +1,8 @@
 extends Node
 
 export var target_node : NodePath
+signal average_signal
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var randomNode = get_node(target_node)
 	
@@ -14,7 +14,6 @@ func _ready():
 	call_deferred("check_children")
 
 func check_children():
-	# get the children of the target node
 	var randomNode = get_node(target_node)
 	var children = randomNode.get_children()
 	
@@ -35,10 +34,4 @@ func check_children():
 	var average_y = total_y / children.size()
 	
 	print("Average position:", Vector2(average_x, average_y))
-	
-	# do something with the children
-	print("Children:", children)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	emit_signal("average_signal", Vector2(average_x, average_y))

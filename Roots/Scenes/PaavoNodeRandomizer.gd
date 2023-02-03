@@ -1,13 +1,13 @@
 extends Node2D
 
 func _ready():
-	for i in range(2):
+	for i in range(5):
 		
 		# Creates two random nodes with random positions and red
 		#rectangles for debugging, and adds them as child nodes
 		
 		var randNode = Node2D.new()
-		randNode.position = Vector2(rand_range(-100, 100), rand_range(-100, 100))
+		randNode.position = Vector2(rand_range(-1000, 1000), rand_range(-100, 100))
 		
 		var color_rect = ColorRect.new()
 		color_rect.rect_size = Vector2(10, 10)
