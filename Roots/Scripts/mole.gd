@@ -49,6 +49,7 @@ func _physics_process(delta):
 		#velocity = move_and_slide(velocity)
 	var collision = move_and_collide(velocity*delta)
 	if collision:
-		print(collision.get_collider())
-		collision.get_collider().get_parent().queue_free()
-		
+		print(collision.collider.name)
+		if ("RootTail" in collision.collider.name):
+			collision.get_collider().get_parent().queue_free()
+	

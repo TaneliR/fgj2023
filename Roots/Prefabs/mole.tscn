@@ -37,6 +37,7 @@ height = 6.00002
 
 [node name="moleBody" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
+collision_layer = 128
 input_pickable = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -46,6 +47,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -8, -8 )
 frames = SubResource( 6 )
+frame = 4
 speed_scale = 3.0
 playing = true
 centered = false

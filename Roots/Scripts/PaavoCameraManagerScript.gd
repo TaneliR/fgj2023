@@ -20,21 +20,19 @@ func check_children():
 #
 	if children.empty():
 		print("Waiting for children to be instantiated...")
-		call_deferred("check_children")
 
+	else:
 	## Calculate the average position between the nodes in the array
+		var total_x = 0
+		var total_y = 0
 
-	var total_x = 0
-	var total_y = 0
+		for node in children:
+			total_x += node.position.x
+			total_y += node.position.y
 
-	for node in children:
-		total_x += node.position.x
-		total_y += node.position.y
-
-	var average_x = total_x / children.size()
-	var average_y = total_y / children.size()
-
-	emit_signal("average_signal", Vector2(average_x, average_y))
+		var average_x = total_x / children.size()
+		var average_y = total_y / children.size()
+		emit_signal("average_signal", Vector2(average_x, average_y))
 
 
 	# Calculate the distance between two of the most distant nodes
