@@ -12,6 +12,7 @@ onready var spawnPoint = rootHead.position
 
 onready var coll = CollisionShape2D
 onready var color = Color8(14, 103, 15)
+onready var timer2 = Timer.new()
 
 var nodeDepth = 1
 # Called when the node enters the scene tree for the first time.
@@ -32,9 +33,12 @@ func _ready():
 	line.add_point(spawnPoint)
 	
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	timer2.connect("timeout", self, "_on_Timer2_timeout")
 	
 	add_child(timer)
+	add_child(timer2)
 	timer.start(rng.randi_range(2, 5))
+	timer2.start(1)
 
 func _draw():
 	var line = rootTail.get_child(1)
@@ -57,6 +61,9 @@ func _on_Timer_timeout():
 		rootHead.get_child(2).emitting = false
 		rootHead.get_child(0).disabled = true
 		rootHead.move_and_collide(Vector2.ZERO)
+		
+func _on_Timer2_timeout():
+	self.get_node("RootHead").set_collision_layer(17)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

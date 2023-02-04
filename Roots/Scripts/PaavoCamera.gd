@@ -7,7 +7,7 @@ export var zoom_multiplier = 1
 export var shake_intensity = 0.5
 export var shake_duration = 0.3
 
-export var zoom_speed = 10
+export var zoom_speed = 2
 var smooth_zoom = 1
 var target_zoom = 1
 
@@ -18,8 +18,10 @@ func start_shake():
 
 func _process(delta):
 	smooth_zoom = lerp(smooth_zoom, target_zoom, zoom_speed * delta)
-	if smooth_zoom < target_zoom:
+	if smooth_zoom < (target_zoom - 0.1):
 		set_zoom(Vector2(smooth_zoom, smooth_zoom))
+	elif !get_node("Area2D").is_monitoring():
+		get_node("Area2D").set_monitoring(true)
 	
 	call_deferred("check_collision")
 	
@@ -47,7 +49,7 @@ func _on_CameraNode_average_signal(average_signal):
 
 func check_collision():
 	if get_node("Area2D").get_overlapping_bodies().size():
-		print("TÖRMÄSIN SAATANA")
-		set_scale(get_scale() * 1.04)		
-		target_zoom = target_zoom * 1.04
+		get_node("Area2D").set_monitoring(false)
+		set_scale(get_scale() * 1.20)	
+		target_zoom = target_zoom * 1.20
 		
