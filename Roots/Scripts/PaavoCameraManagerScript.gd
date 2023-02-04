@@ -16,15 +16,11 @@ func _process(_delta):
 	call_deferred("check_children")
 
 func check_children():
-#	var randomNode = get_node(target_node)
-#	var children = randomNode.get_children()
 	var children = get_tree().get_nodes_in_group("roots")
-	print(children)
 #
 	if children.empty():
 		print("Waiting for children to be instantiated...")
 		call_deferred("check_children")
-
 
 	## Calculate the average position between the nodes in the array
 
@@ -44,14 +40,14 @@ func check_children():
 	# Calculate the distance between two of the most distant nodes
 	# and emit it as a signal to the camera 
 #
-	var max_distance = 0
-	if (children.size() > 1):
-		for i in range(children.size()):
-			for j in range(i + 1, children.size()):
-				# Calculate the distance between the nodes
-				var distance = children[i].position.distance_to(children[j].position)
-
-				if distance > max_distance:
-					max_distance = distance
-
-		emit_signal("max_distance", float(max_distance))
+#	var max_distance = 0
+#	if (children.size() > 1):
+#		for i in range(children.size()):
+#			for j in range(i + 1, children.size()):
+#				# Calculate the distance between the nodes
+#				var distance = children[i].position.distance_to(children[j].position)
+#
+#				if distance > max_distance:
+#					max_distance = distance
+#
+#		emit_signal("max_distance", float(max_distance))

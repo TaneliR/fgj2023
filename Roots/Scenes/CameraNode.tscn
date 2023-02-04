@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/PaavoCameraManagerScript.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PaavoCamera.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 510, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 300 )
 
 [node name="CameraNode" type="Node"]
 script = ExtResource( 1 )
@@ -13,6 +19,26 @@ script = ExtResource( 2 )
 zoom_multiplier = 7500
 shake_intensity = 13.0
 shake_duration = 0.75
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( 1, -250 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( 0, 249 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( -464, 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( 464, 1 )
+shape = SubResource( 2 )
 
 [connection signal="average_signal" from="." to="Camera2D" method="_on_CameraNode_average_signal"]
 [connection signal="max_distance" from="." to="Camera2D" method="_on_CameraNode_max_distance"]
