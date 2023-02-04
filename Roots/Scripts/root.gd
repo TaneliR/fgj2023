@@ -34,7 +34,7 @@ func _ready():
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	
 	add_child(timer)
-	timer.start(rng.randi_range(8, 20))
+	timer.start(rng.randi_range(2, 5))
 
 func _draw():
 	var line = rootTail.get_child(1)
@@ -52,14 +52,18 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	if (!finished):
-		disableRoot()
 		self.get_parent().addRoot(rootHead.global_position, direction, nodeDepth)
+		finished = true
+		rootHead.get_child(2).emitting = false
+		rootHead.get_child(0).disabled = true
+		rootHead.move_and_collide(Vector2.ZERO)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if (!finished):
-		var dir = get_global_mouse_position() - global_position
-		var collision = rootHead.move_and_collide(((direction + dir.normalized() * SPEED) * delta ).rotated(rng.randf_range(-PI / 2, PI / 2)))
+		#var dir = (get_global_mouse_position() - global_position).normalized()
+			
+		var collision = rootHead.move_and_collide(((direction * SPEED) * delta ).rotated(rng.randf_range(-PI / 2, PI / 2)))
 		_draw()
 		if collision:
 			disableRoot()
@@ -72,6 +76,7 @@ func generateNextWaypoint(previousDirection):
 func disableRoot():
 	finished = true
 	timer.stop()
+	
 	self.get_parent().removeRoot(self)
 	rootHead.get_child(2).emitting = false
 	rootHead.get_child(0).disabled = true
