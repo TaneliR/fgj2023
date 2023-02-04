@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 50
+const SPEED = 80
 
 onready var rootHead = get_child(0)
 onready var rootTail = get_child(1)
@@ -24,7 +24,6 @@ func _ready():
 	var offsets = [0, 1]
 	var newColor = Color8(14 + darken, 103 + darken, 15 + darken)
 	var colors = PoolColorArray([color, newColor])
-	print(colors)
 	var newGradient = line.gradient.duplicate()
 	newGradient.offsets = offsets
 	newGradient.colors = colors
@@ -35,7 +34,7 @@ func _ready():
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	
 	add_child(timer)
-	timer.start(rng.randi_range(2, 6))
+	timer.start(rng.randi_range(8, 20))
 
 func _draw():
 	var line = rootTail.get_child(1)
@@ -60,9 +59,7 @@ func _on_Timer_timeout():
 func _physics_process(delta):
 	if (!finished):
 		var dir = get_global_mouse_position() - global_position
-		print(dir)
-		print(dir.normalized())
-		var collision = rootHead.move_and_collide((direction * dir.normalized() * delta * SPEED).rotated(rng.randf_range(-PI / 2, PI / 2)))
+		var collision = rootHead.move_and_collide(((direction + dir.normalized() * SPEED) * delta ).rotated(rng.randf_range(-PI / 2, PI / 2)))
 		_draw()
 		if collision:
 			disableRoot()

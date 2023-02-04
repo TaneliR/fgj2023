@@ -28,7 +28,6 @@ func addRoot(position, direction, depth):
 	if (rootNodes.size() >= maxNodes):
 		pass
 	else:
-		
 		var newRoot = rootPrefab.instance()
 		var newRoot2 = rootPrefab.instance()
 		newRoot.nodeDepth = depth + 1
