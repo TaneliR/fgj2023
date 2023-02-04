@@ -51,5 +51,5 @@ func _physics_process(delta):
 	if collision:
 		print(collision.collider.name)
 		if ("RootTail" in collision.collider.name):
-			collision.get_collider().get_parent().queue_free()
+			collision.get_collider().get_parent().killRoot()
 	
