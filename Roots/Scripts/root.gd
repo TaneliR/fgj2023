@@ -86,7 +86,9 @@ func disableRoot():
 	self.get_node("/root/Node2D").removeRoot(self)
 	rootHead.get_child(2).emitting = false
 	rootHead.get_child(0).disabled = true
+	rootHead.set_collision_mask(0)
 	rootHead.move_and_collide(Vector2() * 0)
+	rootTail.set_collision_mask(0)
 	
 func wither():
 	get_node("RootTail/TailLine").gradient.set_color(0, Color(0.4, 0.26, 0.11, 1))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Prefabs/Root.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/lannote.png" type="Texture" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Scenes/Puu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/MusicPlayer.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Sprites/parallax-bg-back-alt.png" type="Texture" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -63,7 +62,6 @@ material = SubResource( 1 )
 position = Vector2( 123, -403 )
 scale = Vector2( 10.9199, 10.124 )
 z_index = -1
-texture = ExtResource( 14 )
 
 [node name="Root" parent="." instance=ExtResource( 1 )]
 position = Vector2( 500, 52 )

@@ -10,13 +10,14 @@ script = ExtResource( 1 )
 
 [node name="Puu1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -16 )
+frame = 2
 
 [node name="Puu2" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 0, -32 )
-frame = 3
+frame = 4
 
 [node name="Puu3" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 0, -64 )
-frame = 0
+frame = 10
