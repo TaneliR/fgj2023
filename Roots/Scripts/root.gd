@@ -20,7 +20,7 @@ func _ready():
 	rng.randomize()
 	direction = Vector2(rng.randf_range(-1, 1), rng.randf_range(0, 1))
 	var line = rootTail.get_child(1)
-	var darken = nodeDepth * 15
+	var darken = nodeDepth * 15 - rootHead.position.y
 	var offsets = [0, 1]
 	var newColor = Color8(14 + darken, 103 + darken, 15 + darken)
 	var colors = PoolColorArray([color, newColor])
@@ -52,25 +52,27 @@ func _process(delta):
 	pass
 
 func _on_Timer_timeout():
-	print(rootHead.global_position)
 	if (!finished):
+		disableRoot()
 		self.get_parent().addRoot(rootHead.global_position, direction, nodeDepth)
-		self.get_parent().removeRoot(self)
-		finished = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if (!finished):
-		var collision = rootHead.move_and_collide(direction * delta * SPEED)
+		var collision = rootHead.move_and_collide((direction * delta * SPEED).rotated(rng.randf_range(-PI / 2, PI / 2)))
 		_draw()
 		if collision:
-			finished = true
-			timer.stop()
-			rootHead.move_and_collide(Vector2() * 0)
-			rootHead.get_child(0).disabled = true
+			disableRoot()
 			print("I collided with ", collision.collider.name)
 			
 	
 func generateNextWaypoint(previousDirection):
 	pass
 	
+func disableRoot():
+	finished = true
+	timer.stop()
+	self.get_parent().removeRoot(self)
+	rootHead.get_child(2).emitting = false
+	rootHead.get_child(0).disabled = true
+	rootHead.move_and_collide(Vector2() * 0)
