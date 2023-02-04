@@ -45,9 +45,10 @@ func _input(event):
 func _physics_process(delta):
 	velocity = position.direction_to(target) * speed
 	look_at(target)
-	if position.distance_to(target) > 5:
+	#if position.distance_to(target) > 5:
 		#velocity = move_and_slide(velocity)
-		var collision = move_and_collide(velocity*delta)
-		if collision:
-			print(collision)
-	
+	var collision = move_and_collide(velocity*delta)
+	if collision:
+		print(collision.get_collider())
+		collision.get_collider().get_parent().queue_free()
+		
