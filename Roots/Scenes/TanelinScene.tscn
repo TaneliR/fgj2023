@@ -64,7 +64,7 @@ scale = Vector2( 16.1094, 9.51563 )
 texture = ExtResource( 8 )
 
 [node name="Root" parent="." instance=ExtResource( 1 )]
-position = Vector2( 500, 32 )
+position = Vector2( 500, 52 )
 
 [node name="KinematicBody2D" type="Area2D" parent="."]
 collision_layer = 0
