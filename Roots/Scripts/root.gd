@@ -51,9 +51,6 @@ func _draw():
 	newShape.b = rootHead.position
 	collider.shape = newShape
 
-func _process(delta):
-	pass
-
 func _on_Timer_timeout():
 	if (!finished):
 		self.get_parent().addRoot(rootHead.global_position, direction, nodeDepth)
