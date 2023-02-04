@@ -4,6 +4,10 @@ export var target_node : NodePath
 signal average_signal
 signal max_distance
 
+var c
+var vel = Vector3()
+var speed = 2
+
 func _ready():
 	
 	if not target_node:

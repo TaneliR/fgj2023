@@ -15,6 +15,7 @@ target_node = NodePath("../NodeRandomizer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 script = ExtResource( 2 )
 zoom_multiplier = 7500
 shake_intensity = 13.0

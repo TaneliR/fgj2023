@@ -12,6 +12,10 @@ var smooth_zoom = 1
 var target_zoom = 1
 
 var shake_timer = 0
+var centerPoint
+var c
+var vel = Vector3()
+var speed = 2
 
 func start_shake():
 	shake_timer = shake_duration
@@ -37,15 +41,17 @@ func _process(delta):
 
 		# Fade out the shake intensity over time
 		shake_intensity *= (1 - delta / shake_duration)
-		
-	else:
+
+	elif centerPoint:
+		position = lerp(position, centerPoint, 0.9)
+	else: 
 		position = Vector2(0, 0)
 
 func _on_ready():
 	smoothing_enabled = true
 
 func _on_CameraNode_average_signal(average_signal):
-	position = average_signal		# set camera pos 
+	centerPoint = average_signal		# set camera pos 
 
 func check_collision():
 	if get_node("Area2D").get_overlapping_bodies().size():
