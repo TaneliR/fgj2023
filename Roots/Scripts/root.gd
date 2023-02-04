@@ -14,6 +14,8 @@ onready var coll = CollisionShape2D
 onready var color = Color8(14, 103, 15)
 onready var timer2 = Timer.new()
 
+onready var dead = false
+
 var nodeDepth = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,3 +87,46 @@ func disableRoot():
 	rootHead.get_child(2).emitting = false
 	rootHead.get_child(0).disabled = true
 	rootHead.move_and_collide(Vector2() * 0)
+	
+func wither():
+	get_node("RootTail/TailLine").gradient.set_color(0, Color(0.4, 0.26, 0.11, 1))
+	get_node("RootTail/TailLine").gradient.set_color(1, Color(0.4, 0.26, 0.11, 1))
+
+func killRoot():
+	dead = true
+	disableRoot()
+	wither()
+	var t = Timer.new()
+	t.set_wait_time(0.5)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	var hadChildRoot = false
+	for child in get_children():
+		if (child.is_in_group("roots")):
+			hadChildRoot = true
+			child.killRoot()
+	if (!hadChildRoot):
+		cleanUp()
+		
+func cleanUp():
+	var t = Timer.new()
+	t.set_wait_time(0.25)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	if (get_parent().dead):
+		var hasChildren = false
+		for child in get_parent().get_children():
+			if (child.is_in_group("roots")):
+				hasChildren = true
+		if !hasChildren:
+			get_parent().cleanUp()
+	t.set_wait_time(0.20)	
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	queue_free()
