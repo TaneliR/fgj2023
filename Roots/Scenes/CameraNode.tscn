@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PaavoCameraManagerScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/PaavoCamera.gd" type="Script" id=2]
+
+[node name="CameraNode" type="Node"]
+script = ExtResource( 1 )
+target_node = NodePath("../NodeRandomizer")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 2 )
+zoom_multiplier = 7500
+shake_intensity = 13.0
+shake_duration = 0.75
+
+[connection signal="average_signal" from="." to="Camera2D" method="_on_CameraNode_average_signal"]
+[connection signal="max_distance" from="." to="Camera2D" method="_on_CameraNode_max_distance"]

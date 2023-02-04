@@ -16,6 +16,7 @@ func check_children():
 	var randomNode = get_node(target_node)
 	var children = randomNode.get_children()
 	
+	
 	if children.empty():
 		print("Waiting for children to be instantiated...")
 		call_deferred("check_children")
@@ -50,6 +51,3 @@ func check_children():
 				max_distance = distance
 				
 	emit_signal("max_distance", float(max_distance))
-	
-	print(max_distance)
-	# TODO: signal to camera and base the zoom level
