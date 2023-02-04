@@ -10,7 +10,8 @@ radius = 1.08476
 b = Vector2( 0, 4 )
 
 [sub_resource type="Gradient" id=8]
-colors = PoolColorArray( 0.890196, 0.996078, 0.384314, 1, 0.0392157, 0.623529, 0.0470588, 1 )
+resource_local_to_scene = true
+colors = PoolColorArray( 0.572549, 0.996078, 0.152941, 1, 0.054902, 0.403922, 0.0588235, 1 )
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -37,3 +38,7 @@ shape = SubResource( 9 )
 [node name="TailLine" type="Line2D" parent="RootTail"]
 width = 5.0
 gradient = SubResource( 8 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
