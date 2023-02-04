@@ -16,6 +16,7 @@ onready var color = Color8(14, 103, 15)
 var nodeDepth = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("roots")
 	rng.randomize()
 	direction = Vector2(rng.randf_range(-1, 1), rng.randf_range(0, 1))
 	var line = rootTail.get_child(1)
