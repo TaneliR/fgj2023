@@ -32,6 +32,8 @@ script = ExtResource( 1 )
 position = Vector2( -3.8147e-06, -0.420362 )
 collision_layer = 3
 collision_mask = 0
+collision_layer = 18
+collision_mask = 17
 collision/safe_margin = 1.0
 
 [node name="HeadCollider" type="CollisionShape2D" parent="RootHead"]
@@ -45,7 +47,8 @@ process_material = SubResource( 10 )
 
 [node name="RootTail" type="StaticBody2D" parent="."]
 position = Vector2( 0, -2 )
-collision_mask = 2
+collision_layer = 17
+collision_mask = 18
 
 [node name="TailCollider" type="CollisionShape2D" parent="RootTail"]
 position = Vector2( 0, -5 )
