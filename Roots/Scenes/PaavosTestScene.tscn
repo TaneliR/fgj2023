@@ -17,10 +17,12 @@ target_node = NodePath("../NodeRandomizer")
 
 [node name="Camera2D" type="Camera2D" parent="CameraNode"]
 current = true
-zoom = Vector2( 3, 3 )
 script = ExtResource( 4 )
+shake_intensity = 13.0
+shake_duration = 0.75
 
 [node name="NodeRandomizer" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
 [connection signal="average_signal" from="CameraNode" to="CameraNode/Camera2D" method="_on_CameraNode_average_signal"]
+[connection signal="max_distance" from="CameraNode" to="CameraNode/Camera2D" method="_on_CameraNode_max_distance"]

@@ -13,7 +13,7 @@ func _ready():
 		randNode.position = Vector2(randX,randY)
 		
 		var color_rect = ColorRect.new()
-		color_rect.rect_size = Vector2(10, 10)
+		color_rect.rect_size = Vector2(100, 100)
 		color_rect.color = Color(1, 0, 0)
 		
 		randNode.add_child(color_rect)
