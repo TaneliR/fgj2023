@@ -31,7 +31,6 @@ script = ExtResource( 1 )
 
 [node name="RootHead" type="KinematicBody2D" parent="."]
 position = Vector2( -3.8147e-06, -0.420362 )
-collision_layer = 16
 collision_mask = 16
 collision/safe_margin = 1.0
 

@@ -26,6 +26,7 @@ func removeRoot(root):
 	#root.get_parent().remove_from_group("roots")
 
 func addRoot(position, direction, depth):
+#	if get_tree().get_nodes_in_group("roots").size() < 20:
 
 	var newRoot = rootPrefab.instance()
 	var newRoot2 = rootPrefab.instance()
