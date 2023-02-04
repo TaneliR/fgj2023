@@ -15,6 +15,7 @@ func _input(event):
 
 func addMole():
 	var newMole = molePrefab.instance()
+	newMole.position = Vector2(500, 500)
 	add_child(newMole)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
