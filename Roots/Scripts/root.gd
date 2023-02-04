@@ -59,7 +59,10 @@ func _on_Timer_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if (!finished):
-		var collision = rootHead.move_and_collide((direction * delta * SPEED).rotated(rng.randf_range(-PI / 2, PI / 2)))
+		var dir = get_global_mouse_position() - global_position
+		print(dir)
+		print(dir.normalized())
+		var collision = rootHead.move_and_collide((direction * dir.normalized() * delta * SPEED).rotated(rng.randf_range(-PI / 2, PI / 2)))
 		_draw()
 		if collision:
 			disableRoot()
