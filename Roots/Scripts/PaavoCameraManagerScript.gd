@@ -27,8 +27,8 @@ func check_children():
 		var total_y = 0
 
 		for node in children:
-			total_x += node.position.x
-			total_y += node.position.y
+			total_x += node.global_position.x
+			total_y += node.global_position.y
 
 		var average_x = total_x / children.size()
 		var average_y = total_y / children.size()

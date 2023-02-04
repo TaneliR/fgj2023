@@ -25,7 +25,7 @@ func removeRoot(root):
 	pass
 	#root.get_parent().remove_from_group("roots")
 
-func addRoot(position, direction, depth):
+func addRoot(position, globalPosition, direction, depth, rootNode):
 #	if get_tree().get_nodes_in_group("roots").size() < 20:
 
 	var newRoot = rootPrefab.instance()
@@ -37,7 +37,5 @@ func addRoot(position, direction, depth):
 	newRoot2.position = position
 	newRoot.direction = direction + newDirection
 	newRoot2.direction = (direction + newDirection) / 2
-	add_child(newRoot)
-	add_child(newRoot2)
-	rootNodes.append(newRoot)
-	rootNodes.append(newRoot2)
+	rootNode.add_child(newRoot)
+	rootNode.add_child(newRoot2)

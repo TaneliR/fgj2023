@@ -17,7 +17,7 @@ func get_target():
 	print(targets)
 	var randIndex = rng.randi_range(0, targets.size()-1)
 	var targetNode = targets[randIndex]
-	var target = Vector2(targetNode.position.x, targetNode.position.y)
+	var target = Vector2(targetNode.global_position.x, targetNode.global_position.y)
 	return target
 
 func take_damage():

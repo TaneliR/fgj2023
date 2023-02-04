@@ -53,7 +53,7 @@ func _draw():
 
 func _on_Timer_timeout():
 	if (!finished):
-		self.get_parent().addRoot(rootHead.global_position, direction, nodeDepth)
+		get_node("/root/Node2D").addRoot(rootHead.position, rootHead.global_position, direction, nodeDepth, self)
 		finished = true
 		rootHead.get_child(2).emitting = false
 		rootHead.get_child(0).disabled = true
@@ -81,7 +81,7 @@ func disableRoot():
 	finished = true
 	timer.stop()
 	
-	self.get_parent().removeRoot(self)
+	self.get_node("/root/Node2D").removeRoot(self)
 	rootHead.get_child(2).emitting = false
 	rootHead.get_child(0).disabled = true
 	rootHead.move_and_collide(Vector2() * 0)
