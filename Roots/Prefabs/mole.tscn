@@ -47,7 +47,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -8, -8 )
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 speed_scale = 3.0
 playing = true
 centered = false
@@ -55,3 +55,10 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 7 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 6.0
+gravity = Vector2( 0, 10 )
+color = Color( 1, 0, 0, 1 )
