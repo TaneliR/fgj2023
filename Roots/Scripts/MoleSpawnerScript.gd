@@ -7,7 +7,7 @@ onready var l_spawn = get_node("L_Spawner")
 onready var r_spawn = get_node("R_Spawner")
 onready var randArray = [l_spawn, r_spawn]
 
-var upright_position = Vector2(0, 0)
+var upright_position = Vector2(0, 1000) #500 on ylin mahd. positio
 var downright_position = Vector2(0, y_descent)
 var going_down = true
 
@@ -29,11 +29,13 @@ func _process(delta):
 	
 	if position >= downright_position + Vector2(0, -5):
 		going_down = false
-		randomize_and_spawn()
 	elif position <= upright_position + Vector2(0, 5):
 		going_down = true
 		
 
+func _input(event):
+	if event.is_action_pressed("ui_up"):
+		randomize_and_spawn()
 
 func randomize_and_spawn():
 	var randIndex = rng.randi_range(0, randArray.size()-1)
