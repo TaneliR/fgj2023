@@ -38,6 +38,17 @@ func take_damage():
 	hits -= 1
 	timer.start(2)
 	if hits < 1:
+		if !(get_node("Audio").playing):
+			get_node("Audio").playing = true
+			get_node("Audio").play(0.18)
+		visible = false
+		get_node("CollisionShape2D").disabled = true
+		var t = Timer.new()
+		t.set_wait_time(0.5)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
 		queue_free()
 
 #func _input_event(viewport, event, shape_idx):
