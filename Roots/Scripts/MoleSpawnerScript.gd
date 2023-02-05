@@ -5,6 +5,7 @@ export var movement_speed = 2500
 
 onready var l_spawn = get_node("L_Spawner")
 onready var r_spawn = get_node("R_Spawner")
+onready var randArray = [l_spawn, r_spawn]
 
 var upright_position = Vector2(0, 0)
 var downright_position = Vector2(0, y_descent)
@@ -14,6 +15,11 @@ var journey_time = upright_position.distance_to(downright_position) / movement_s
 
 var rng = RandomNumberGenerator.new()
 var molePrefab = preload("res://Prefabs/mole.tscn")
+
+func _ready():
+	rng.randomize()
+	print(l_spawn)
+	print(r_spawn)
 
 func _process(delta):
 	if going_down: 
@@ -27,13 +33,14 @@ func _process(delta):
 	elif position <= upright_position + Vector2(0, 5):
 		going_down = true
 		
+
+
 func randomize_and_spawn():
-	rng.randomize()
-	var randArray = [l_spawn, r_spawn]
 	var randIndex = rng.randi_range(0, randArray.size()-1)
 	var targetNode = randArray[randIndex]
-	
 	var newMole = molePrefab.instance()
-	newMole.position = targetNode.position
-	add_child(newMole)
+	print(randArray)
+	print(newMole)
+	newMole.global_position = targetNode.global_position
+	get_node("/root/Node2D").add_child(newMole)
 	

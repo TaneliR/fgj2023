@@ -10,7 +10,13 @@ var velocity = Vector2()
 func _ready():
 	rng.randomize()
 	add_to_group("moles")
-	get_target()
+	target = get_target()
+	print(target)
+	print(position.direction_to(target).x)
+	if position.direction_to(target).x < 0:
+		get_node("AnimatedSprite").set_flip_v(true)
+	else:
+		get_node("AnimatedSprite").set_flip_v(false)
 	
 func get_target():
 	var targets = get_tree().get_nodes_in_group("roots")
@@ -31,16 +37,16 @@ func _input_event(viewport, event, shape_idx):
 		print("osu")
 		take_damage()
 
-func _input(event):
-	if event.is_action_pressed("ui_up"):
-		#target = get_global_mouse_position()
-		target = get_target()
-		print(target)
-		print(position.direction_to(target).x)
-		if position.direction_to(target).x < 0:
-			get_node("AnimatedSprite").set_flip_v(true)
-		else:
-			get_node("AnimatedSprite").set_flip_v(false)
+#func _input(event):
+#	if event.is_action_pressed("ui_up"):
+#		#target = get_global_mouse_position()
+#		target = get_target()
+#		print(target)
+#		print(position.direction_to(target).x)
+#		if position.direction_to(target).x < 0:
+#			get_node("AnimatedSprite").set_flip_v(true)
+#		else:
+#			get_node("AnimatedSprite").set_flip_v(false)
 
 func _physics_process(delta):
 	velocity = position.direction_to(target) * speed
