@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (int) var speed = 50
-var hits = 10
+var hits = 120
 
 onready var target = position
 onready var rng = RandomNumberGenerator.new()
@@ -22,7 +22,6 @@ func get_target():
 
 func take_damage():
 	hits -= 1
-	print(hits)
 	if hits < 1:
 		queue_free()
 

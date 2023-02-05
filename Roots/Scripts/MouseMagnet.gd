@@ -7,4 +7,5 @@ func _process(_delta):
 	if (get_overlapping_bodies().size() > 0):
 		for body in get_overlapping_bodies():
 			if ("moleBody" in body.name):
-				body.queue_free()
+				body.take_damage()
+				#body.queue_free()
