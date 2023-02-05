@@ -133,4 +133,5 @@ func cleanUp():
 	t.start()
 	yield(t, "timeout")
 	t.queue_free()
+	get_node("/root/Node2D/HUD/DeadRootCiunt").on_hit()
 	queue_free()
