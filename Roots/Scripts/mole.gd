@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export (int) var speed = 50
-var hits = 60
+export (int) var speed = 100
+var hits = 15
 
 onready var timer = Timer.new()
 onready var target = position
@@ -22,7 +22,7 @@ func _ready():
 	add_child(timer)
 	
 func _on_timer_timeout():
-	speed = 50
+	speed = 100
 	
 func get_target():
 	var targets = get_tree().get_nodes_in_group("roots")

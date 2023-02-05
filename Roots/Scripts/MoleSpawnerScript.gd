@@ -28,14 +28,14 @@ func _ready():
 	timer2.connect("timeout", self, "_on_timer2_timeout")
 	add_child(timer1)
 	add_child(timer2)
-	timer1.start(2)
+	timer2.start(0.5)
 
-func _on_timer1_timeout():
-	timer2.start(1)
+#func _on_timer1_timeout():
+#	timer2.start(0.5)
 
 func _on_timer2_timeout():
 	randomize_and_spawn()
-	timer2.start(1)
+	timer2.start(0.5)
 
 func _process(delta):
 	if going_down: 
