@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (int) var speed = 100
-var hits = 15
+var hits = 20
 
 onready var timer = Timer.new()
 onready var target = position
