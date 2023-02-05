@@ -11,7 +11,7 @@ onready var timer2 = Timer.new()
 
 
 
-var upright_position = Vector2(0, 500) #1000 on ylin mahd. positio
+var upright_position = Vector2(0, 250) #y on ylin mahd. positio
 var downright_position = Vector2(0, y_descent)
 var going_down = true
 

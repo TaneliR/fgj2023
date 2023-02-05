@@ -117,4 +117,4 @@ scale = Vector2( 3, 3 )
 [node name="MusicPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="MoleSpawner" parent="." instance=ExtResource( 8 )]
-position = Vector2( 0, 1000 )
+y_descent = 1000
