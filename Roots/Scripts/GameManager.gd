@@ -38,4 +38,11 @@ func addRoot(position, globalPosition, direction, depth, rootNode):
 	newRoot.direction = direction + newDirection
 	newRoot2.direction = (direction + newDirection) / 2
 	rootNode.add_child(newRoot)
+	var t = Timer.new()
+	t.set_wait_time(0.25)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
 	rootNode.add_child(newRoot2)

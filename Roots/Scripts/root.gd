@@ -40,7 +40,7 @@ func _ready():
 	add_child(timer)
 	add_child(timer2)
 	timer.start(rng.randi_range(2, 5))
-	timer2.start(1)
+	timer2.start(0.5)
 
 func _draw():
 	var line = rootTail.get_child(1)
@@ -62,7 +62,9 @@ func _on_Timer_timeout():
 		rootHead.move_and_collide(Vector2.ZERO)
 		
 func _on_Timer2_timeout():
-	self.get_node("RootHead").set_collision_layer(17)
+	rootHead.get_child(0).disabled = false
+	rootTail.get_child(0).disabled = false
+			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -73,7 +75,7 @@ func _physics_process(delta):
 		_draw()
 		if collision:
 			disableRoot()
-			print("I collided with ", collision.collider.name)
+#			print("I collided with ", collision.collider.name)
 			
 	
 func generateNextWaypoint(previousDirection):

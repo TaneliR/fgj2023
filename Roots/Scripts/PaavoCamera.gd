@@ -54,8 +54,9 @@ func _on_CameraNode_average_signal(average_signal):
 	centerPoint = average_signal		# set camera pos 
 
 func check_collision():
-	if get_node("Area2D").get_overlapping_bodies().size():
-		get_node("Area2D").set_monitoring(false)
-		set_scale(get_scale() * 1.20)	
-		target_zoom = target_zoom * 1.20
+	if (get_node("Area2D").is_monitoring()):
+		if get_node("Area2D").get_overlapping_bodies().size():
+			get_node("Area2D").set_monitoring(false)
+			set_scale(get_scale() * 1.20)	
+			target_zoom = target_zoom * 1.20
 		
