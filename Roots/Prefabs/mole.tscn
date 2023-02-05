@@ -47,7 +47,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -8, -8 )
 frames = SubResource( 6 )
-frame = 4
+frame = 3
 speed_scale = 3.0
 playing = true
 centered = false
@@ -57,6 +57,7 @@ rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 50
 emission_shape = 1
 emission_sphere_radius = 6.0
