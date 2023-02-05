@@ -97,6 +97,7 @@ texture = ExtResource( 4 )
 process_material = SubResource( 8 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.560784, 0.533333, 0.611765, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]

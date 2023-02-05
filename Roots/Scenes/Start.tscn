@@ -9,8 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
-position = Vector2( 511, 304 )
-scale = Vector2( 0.582031, 0.58601 )
+position = Vector2( 521.888, 301 )
+scale = Vector2( 0.603298, 0.607422 )
 frame = 3
 
 [node name="Button" type="Button" parent="."]
