@@ -6,8 +6,12 @@ export var movement_speed = 2500
 onready var l_spawn = get_node("L_Spawner")
 onready var r_spawn = get_node("R_Spawner")
 onready var randArray = [l_spawn, r_spawn]
+onready var timer1 = Timer.new()
+onready var timer2 = Timer.new()
 
-var upright_position = Vector2(0, 1000) #500 on ylin mahd. positio
+
+
+var upright_position = Vector2(0, 1000) #1000 on ylin mahd. positio
 var downright_position = Vector2(0, y_descent)
 var going_down = true
 
@@ -20,6 +24,18 @@ func _ready():
 	rng.randomize()
 	print(l_spawn)
 	print(r_spawn)
+	timer1.connect("timeout", self, "_on_timer1_timeout")
+	timer2.connect("timeout", self, "_on_timer2_timeout")
+	add_child(timer1)
+	add_child(timer2)
+	timer1.start(5)
+
+func _on_timer1_timeout():
+	timer2.start(2)
+
+func _on_timer2_timeout():
+	randomize_and_spawn()
+	timer2.start(2)
 
 func _process(delta):
 	if going_down: 
