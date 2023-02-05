@@ -12,8 +12,8 @@ func _ready():
 	rng.randomize()
 	add_to_group("moles")
 	target = get_target()
-	print(target)
-	print(position.direction_to(target).x)
+	#print(target)
+	#print(position.direction_to(target).x)
 	if position.direction_to(target).x < 0:
 		get_node("AnimatedSprite").set_flip_v(true)
 	else:
@@ -26,7 +26,7 @@ func _on_timer_timeout():
 	
 func get_target():
 	var targets = get_tree().get_nodes_in_group("roots")
-	print(targets)
+	#print(targets)
 	var randIndex = rng.randi_range(0, targets.size()-1)
 	var targetNode = targets[randIndex]
 	var target = Vector2(targetNode.global_position.x, targetNode.global_position.y)
@@ -40,10 +40,10 @@ func take_damage():
 	if hits < 1:
 		queue_free()
 
-func _input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("click"):
-		print("osu")
-		take_damage()
+#func _input_event(viewport, event, shape_idx):
+#	if event.is_action_pressed("click"):
+#		print("osu")
+#		take_damage()
 
 #func _input(event):
 #	if event.is_action_pressed("ui_up"):
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		#velocity = move_and_slide(velocity)
 	var collision = move_and_collide(velocity*delta)
 	if collision:
-		print(collision.collider.name)
+		#print(collision.collider.name)
 		if ("RootTail" in collision.collider.name):
 			collision.get_collider().get_parent().killRoot()
 	

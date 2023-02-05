@@ -22,8 +22,8 @@ var molePrefab = preload("res://Prefabs/mole.tscn")
 
 func _ready():
 	rng.randomize()
-	print(l_spawn)
-	print(r_spawn)
+	#print(l_spawn)
+	#print(r_spawn)
 	timer1.connect("timeout", self, "_on_timer1_timeout")
 	timer2.connect("timeout", self, "_on_timer2_timeout")
 	add_child(timer1)
@@ -57,8 +57,8 @@ func randomize_and_spawn():
 	var randIndex = rng.randi_range(0, randArray.size()-1)
 	var targetNode = randArray[randIndex]
 	var newMole = molePrefab.instance()
-	print(randArray)
-	print(newMole)
+	#print(randArray)
+	#print(newMole)
 	newMole.global_position = targetNode.global_position
 	get_node("/root/Node2D").add_child(newMole)
 	
