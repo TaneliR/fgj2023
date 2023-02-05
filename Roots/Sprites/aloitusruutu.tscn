@@ -28,6 +28,5 @@ animations = [ {
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 5 )
-frame = 1
 speed_scale = 1.25
 playing = true

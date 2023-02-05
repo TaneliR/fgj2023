@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/ResetButton.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/havioruutu.png" type="Texture" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Havioruutu" type="Sprite" parent="."]
+position = Vector2( 522.5, 300.5 )
+scale = Vector2( 0.594727, 0.594727 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 709.0
+margin_top = 542.0
+margin_right = 805.0
+margin_bottom = 587.0
+text = "RESET"
+script = ExtResource( 1 )
