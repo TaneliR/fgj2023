@@ -21,6 +21,7 @@ func get_target():
 	return target
 
 func take_damage():
+	get_node("CPUParticles2D").emitting = true
 	hits -= 1
 	if hits < 1:
 		queue_free()
