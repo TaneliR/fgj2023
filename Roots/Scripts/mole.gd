@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 export (int) var speed = 50
-var hits = 120
+var hits = 60
 
+onready var timer = Timer.new()
 onready var target = position
 onready var rng = RandomNumberGenerator.new()
 var velocity = Vector2()
@@ -17,6 +18,11 @@ func _ready():
 		get_node("AnimatedSprite").set_flip_v(true)
 	else:
 		get_node("AnimatedSprite").set_flip_v(false)
+	timer.connect("timeout", self, "_on_timer_timeout")
+	add_child(timer)
+	
+func _on_timer_timeout():
+	speed = 50
 	
 func get_target():
 	var targets = get_tree().get_nodes_in_group("roots")
@@ -27,8 +33,10 @@ func get_target():
 	return target
 
 func take_damage():
+	speed = 0
 	get_node("CPUParticles2D").emitting = true
 	hits -= 1
+	timer.start(2)
 	if hits < 1:
 		queue_free()
 

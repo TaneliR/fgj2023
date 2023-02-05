@@ -11,7 +11,7 @@ onready var timer2 = Timer.new()
 
 
 
-var upright_position = Vector2(0, 1000) #1000 on ylin mahd. positio
+var upright_position = Vector2(0, 500) #1000 on ylin mahd. positio
 var downright_position = Vector2(0, y_descent)
 var going_down = true
 
@@ -28,14 +28,14 @@ func _ready():
 	timer2.connect("timeout", self, "_on_timer2_timeout")
 	add_child(timer1)
 	add_child(timer2)
-	timer1.start(5)
+	timer1.start(2)
 
 func _on_timer1_timeout():
-	timer2.start(2)
+	timer2.start(1)
 
 func _on_timer2_timeout():
 	randomize_and_spawn()
-	timer2.start(2)
+	timer2.start(1)
 
 func _process(delta):
 	if going_down: 
