@@ -10,3 +10,5 @@ func _ready():
 func on_hit():
 	dead_roots = dead_roots + 1
 	text = str(dead_roots) + " / " + str(max_dead)
+	if (dead_roots >= max_dead):
+		get_tree().change_scene("res://Scenes/LoseScreen.tscn")
